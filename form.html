@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/interestForm.css">
+    <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="styles/footer.css">
+
+    <title>Kent Outreach</title>
+
+</head>
+<body>
+<!-- Navigation bar -->
+<nav class="navbar navbar-dark navbar-expand-sm" >
+    <div class="container">
+        <!-- logo -->
+        <a href="http://java-chip.greenriverdev.com/KentOutreach/home.html" class="navbar-brand" id="logo"><strong>Kent Outreach</strong></a>
+
+
+    </div><!-- container -->
+</nav>
+<br><br><br>
+<div class="container">
+<!-- Form  -->
+    <br>
+    <div id="errorForm">
+        <h2> Thank you for your Interest! Please come back during business hours to complete the form.</h2>
+        <div class="container"> <br>
+            <h4 class="text-center"><strong>Try these other resources in the meantime:</strong></h4><br>
+            <a href="http://www.211.org" class="links"><p><strong>211</strong></p></a>
+            <br>
+            <a href="http://kentmethodist.com/assistance" class="links"><p><strong>Kent United Methodist Church Assistance</strong></p></a>
+        </div>
+    </div>
+    <form action="confirmationEmail.php" method="post" class="validation" id="interestForm" name="interestForm" onsubmit="return ValidateForm()">
+    <fieldset class="form-group">
+        <h2>Interest Form</h2>
+        <h5>Please fill out the form below, starting with your zip code.</h5>
+        <br>
+        <!-- Zip code input  -->
+        <div class="form-group">
+            <label for="zipCode">Zip code:</label>
+            <input type="text" name="zipCode" class="form-control" id="zipCode" placeholder="Enter your residing zip code">
+            <input type="checkbox" id="zipCodeChk" name="zipCodeChk" onclick="toggleZipChk()">
+            <label for="zipCodeChk" id="zipCodeChkInfo"> Check if you do not have a permanent residence currently.</label><br>
+            <span class="text-danger" id="err-zipCode" hidden="hidden"> Please enter a zip code or indicate if you don't have one.<br></span>
+            <button type="button" id="continue" class="btn btn-dark" onclick="waitForZip()">Continue</button>
+        </div>
+
+        <div id="notZipCode" class="notZipCode">
+        <!-- First name input  -->
+        <div class="form-group">
+            <label for="fname">First Name:</label>
+            <input type="text" name="fname" class="form-control" id="fname" placeholder="Joe">
+            <span class="d-none text-danger" id="err-fname" > Field is required</span><br>
+        </div>
+        <!-- Last name input  -->
+        <div class="form-group">
+            <label for="lname">Last Name:</label>
+            <input type="text" name="lname" class="form-control" id="lname" placeholder="Smith">
+            <span class="d-none text-danger" id="err-lname"> Field is required</span><br>
+        </div>
+        <!-- Assistance question w/ possible error if all checkboxes aren't checked  -->
+        <span id="assistance">What assistance are you seeking? (Check all that apply)</span>
+        <span class="d-none text-danger" id="err-assistance" > <br>Please select at least one assistance choice below<br></span>
+
+        <div class="form-group" id="checkBoxes">
+            <!-- Utilities checkbox and upload w/ info and warning  -->
+            &nbsp;<label><input type="checkbox" id="utilitiesChk" name="checkedBox[]" value="Utilities" onclick="UploadButton('utilities')"> Utilities (electricity or water)</label><br>
+            <div id="utilitiesNotice" hidden="hidden" class="text-primary">Please include a picture showing <br>1. Current bill showing name/address<br>2. Urgent/final notice<br> 3. Account number</div>
+            <span class="text-info" id="war-utilitiesUpl" hidden="hidden"> It is preferred that you upload a file for proof. If you are unable to upload, please have this proof ready if a appointment is scheduled.<br></span>
+            <label><input type="file" id="utilitiesUpl" name="filename" hidden="hidden"></label><div id="utilitiesBR" hidden="hidden"><br></div>
+            <!-- Rent checkbox and upload w/ info and warning  -->
+            <label><input type="checkbox" id="rentChk" name="checkedBox[]" value="Rent" onclick="UploadButton('rent')"> Rent</label><br>
+            <div id="rentNotice" hidden="hidden" class="text-primary">Please include a picture showing your eviction notice</div>
+            <span class="text-info" id="war-rentUpl" hidden="hidden"> It is preferred that you upload a file for proof. If you are unable to upload, please have this proof ready if a appointment is scheduled.<br></span>
+            <label><input type="file" id="rentUpl" name="filename" hidden="hidden"></label><div id="rentBR" hidden="hidden"><br></div>
+            <!-- Gas checkbox and upload w/ info and warning  -->
+            <label><input type="checkbox" id="gasChk" name="checkedBox[]" value="Gas" onclick="UploadButton('gas')"> Gas</label><br>
+            <div id="gasNotice" hidden="hidden" class="text-primary">Please include a picture showing your ID</div>
+            <span class="text-info" id="war-gasUpl" hidden="hidden"> It is preferred that you upload a file for proof. If you are unable to upload, please have this proof ready if a appointment is scheduled.<br></span>
+            <label><input type="file" id="gasUpl" name="filename" hidden="hidden"></label><div id="gasBR" hidden="hidden"><br></div>
+            <!-- Clothing checkbox -->
+            <label><input type="checkbox" id="clothingChk" name="checkedBox[]" value="Clothing/Household Items"> Clothing and household items</label><br>
+            <!-- ID checkbox -->
+            &nbsp;<label><input type="checkbox" id="idChk" name="checkedBox[]" value="ID/Drivers License"> ID or Driver’s License</label><br>
+            <!-- Food checkbox -->
+            &nbsp;<label><input type="checkbox" id="foodChk" name="checkedBox[]" value="Food"> Food</label><br>
+            <!-- Other checkbox w/ info and possible error  -->
+            &nbsp;<label><input type="checkbox" id="otherChk" name="checkedBox[]" value="Other: " onclick="OtherUncheck()"> Other</label><br>
+            <input type="text" id="otherInput" name="otherInput" class="form-control" placeholder="(Please Specify)" onclick="OtherCheck()">
+            <span class="d-none text-danger" id="err-otherInput" > Please specify what other assistance you need<br></span>
+
+            <br>
+        </div>
+        <!-- Email input w/ two possible errors and full data validation  -->
+
+        <div class="form-group">
+            <span class=" text-danger d-none" id="err-phoneMail"> Please provide either an email address or phone number so that we can get in touch with you. Email is Preferred! </span><br>
+            <label for="email">Email Address: (preferred over phone number)</label>
+            <input type="text" name="email" class="form-control" id="email" placeholder="example@email.com">
+            <span class="d-none text-danger email2" id="err-email2"> Email is invalid</span><br>
+        </div>
+        <!-- Phone number input w/ two possible errors and full data validation  -->
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="text" name="phone" class="form-control" id="phone" placeholder="123 456 7890 (No symbols please)">
+            <span class=" text-danger d-none phone2" id="err-phone2"> Phone Number is invalid (Try without symbols)</span><br>
+        </div>
+        <!-- Submit button  -->
+        <input type="submit" value="Submit" class="btn btn-dark" id="submit">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="button" value="&nbsp;&nbsp;Back&nbsp;&nbsp;" class="btn btn-dark" id="back" onclick="window.history.back();">
+
+        </div>
+
+    </fieldset>
+
+</form>
+
+</div>
+
+<!-- Footer -->
+<!-- Using Bootstrap grid-->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <!-- Business Hours -->
+            <div class="col">
+                <p class="title">Business Hours</p>
+                <p>Mon 1pm-4pm</p>
+                <p>Tue 9am-12pm</p>
+                <p>Wed 1pm-4pm</p>
+            </div>
+            <!-- Address -->
+            <div class="col">
+                <!-- Actual address -->
+                <div class="row p-0">
+                    <div class="col">
+                        <p class="title">Address</p>
+                        <a href="https://www.google.com/maps/dir//24447+94th+Ave+S,+Kent,+WA+98030/@47.3819184,-122.2185872,17z/data=!4m17!1m7!3m6!1s0x54905eaea6606e61:0x206815f453c0e48b!2s24447+94th+Ave+S,+Kent,+WA+98030!3b1!8m2!3d47.3819148!4d-122.2163932!4m8!1m0!1m5!1m1!1s0x54905eaea6606e61:0x206815f453c0e48b!2m2!1d-122.2163932!2d47.3819148!3e3">
+                            <p>24447 94th Ave. S <br> Kent, WA 98030</p>
+                        </a>
+
+                        <a href="https://instagram.com"><img src="images/insta.jpg" alt="instagram Icon"></a>
+                        <a href="https://www.linkedin.com"><img src="images/linkin.png" alt="Linked in Icon" id='linkin'></a>
+
+                    </div>
+                    <!-- Google Map -->
+                    <div class="col">
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </div>
+            <!--Phone and Email -->
+            <div class="col">
+
+                <p class="title">
+                    <a href="tel:+12538524100">
+                        <img src="images/callWhite.png" alt="call icon" id="callWhite">
+                    </a>
+                    Phone
+                </p>
+
+                <a href="tel:+12538524100">253-852-4100</a>
+
+                <br><br>
+
+
+                <p class="title">
+                    <a href="mailto:postrander@stjameskent.org"><img src="images/mailWhite.jpg" alt="mail icon"></a>   Email
+                </p>
+                <a href="mailto:postrander@stjameskent.org">
+                    postrander@stjameskent.org
+                </a>
+
+            </div>
+        </div>
+        <div class="row">
+            <br><br><a href="adminLogin.php" id="admin">Admin Login</a>
+        </div>
+    </div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="scripts/script.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBU_LLOMmPutLL_PuPKFE6oVefTfKcAtV4&callback=initMap" type="text/javascript"></script>
+
+<script src="scripts/form.js"></script>
+<script src="scripts/footer.js"></script>
+</body>
+</html>

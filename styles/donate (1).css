@@ -1,0 +1,13 @@
+#ppal{
+    width: 150px;
+    height: 40px;
+}
+.col-md-6 img{
+    width: 100%;
+}
+
+.col-md-6 img:hover{
+    opacity: 1;
+    width: 100%;
+}
+

@@ -1,0 +1,174 @@
+/* The navigation bar */
+.navbar {
+    overflow: hidden;
+    background-color: black;
+    position: fixed; /* Set the navbar to fixed position*/
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    z-index:100;
+    color: tan;
+}
+
+/* Links inside the navbar */
+.navbar a {
+    float: left;
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+/* Change background on mouse-over */
+.navbar a:hover {
+    background: tan;
+    color: black;
+}
+.navbar-dark .navbar-nav .active>.nav-link,
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .nav-link.show,
+.navbar-dark .navbar-nav .show>.nav-link,
+.navbar-dark .navbar-nav .nav-link {
+    color: tan;
+}
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: black;
+    background: tan;
+}
+
+/* Menu img Size*/
+#menu img{
+    width: 30px;
+    height: 40px;
+}
+
+/* Main content */
+.main {
+    margin-top: 30px; /* Add a top margin to avoid content overlay */
+
+}
+/*Implement font*/
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+/*Logo*/
+#logo {
+    font-size: large;
+    float: right;
+    display: block;
+    color: tan;
+    text-decoration: none;
+    margin-bottom: 0;
+}
+#logo:hover{
+    background: tan;
+    color: black;
+}
+#anchorHold{
+    top:300px;
+    position:absolute;
+}
+/* Carousal */
+.carouselB{
+    background-color: black;
+    width: 100%;
+}
+.carousel{
+    max-width:1400px;
+    margin: 0 auto;
+}
+
+/* Centered text */
+.centered {
+    color: #1b1e21;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/*** For Services we Provide***/
+.button{
+    display: inline;
+    background-color: white;
+}
+.button img{
+    width: 15px;
+    height: 15px;
+}
+.flexI{
+    display:inline-flex;
+}
+h5{
+    padding-top: 10px;
+    margin:0;
+}
+.row img:hover {
+    opacity: 0.5;
+}
+#noIntakeForm{
+    border: 2px solid black;
+    padding: 10px 30px;
+    border-radius: 25px;
+    width: 70%;
+    text-align:center;
+    margin: 0px auto;
+    height:100%;
+}
+.links p{
+    border: 2px solid black;
+    padding: 10px 30px;
+    border-radius: 25px;
+    width: 70%;
+    text-align:center;
+    margin: 0px auto;
+    height:100%;
+}
+.links {
+    color: black;
+    text-decoration: none;
+}
+.links:hover{
+    color:black;
+    text-decoration:none;
+}
+.links p:hover{
+    background: tan;
+}
+.links img{
+    width: 50px;
+    height: 50px;
+}
+#linkCall img{
+    width:30px;
+    height:30px;
+}
+#linkCall{
+    padding-top:20px;
+}
+
+#mapID{
+    width:100%;
+    height: 250px;
+    padding:5px;
+    border:0px;
+}
+#mapZip{
+    width:100%;
+    height:300px;
+
+}
+@media only screen and (max-width: 768px) {
+    /* For tablets: */
+    .linkOne{
+        margin:5px;
+    }
+    .linkOne{
+        padding: 5px 10px;
+    }
+}
+
+
+#otherInput{
+    display: none;
+}

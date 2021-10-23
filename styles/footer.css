@@ -1,0 +1,46 @@
+/* Footer */
+.footer {
+    margin-top: 5rem;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+}
+.row{
+    padding:10px;
+}
+.col p {
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+}
+.col img{
+    width: 30px;
+    height: 30px;
+}
+#linkin{
+    width: 50px;
+    height: 50px;
+}
+#admin{
+    color: grey;
+}
+.title{
+    color: tan;
+    font-weight: bold;
+}
+.footer a{
+    color: white;
+    text-decoration: none;
+}
+.footer img{
+    width: 20px;
+    height:20px;
+
+}
+/*Google Map*/
+#map {
+    height: 125px;
+    width: 125px;
+    cursor: default !important;
+}
